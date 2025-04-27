@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="donation_title">Supporta il progetto Bologna Turismo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --ig-primary-background: #ffffff;
+      --ig-secondary-background: #fafafa;
+      --ig-primary-text: #262626;
+      --ig-secondary-text: #8e8e8e;
+      --ig-primary-button: #0095f6;
+      --ig-border: #dbdbdb;
+      --ig-error: #ed4956;
+      --ig-highlight-background: #efefef;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: var(--ig-primary-text); /* Mantieni il colore del testo */
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Fakepage.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.8);
+      z-index: -2;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    .instagram-container {
+      max-width: 470px;
+      width: 100%;
+      background: var(--ig-primary-background);
+      border: 1px solid var(--ig-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .instagram-top-bar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ig-border);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .instagram-back-button {
+      color: var(--ig-primary-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .instagram-top-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .instagram-header {
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--ig-border);
+    }
+
+    .instagram-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin-right: 12px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    .instagram-user-info {
+      flex: 1;
+    }
+
+    .instagram-username {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .instagram-subtitle {
+      font-size: 12px;
+      color: var(--ig-secondary-text);
+      margin-top: 2px;
+    }
+
+    .instagram-more {
+      color: var(--ig-primary-text);
+      font-weight: bold;
+    }
+
+    .instagram-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .instagram-actions {
+      padding: 8px 16px;
+      display: flex;
+      gap: 16px;
+      font-size: 24px;
+    }
+
+    .instagram-action {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .instagram-action:hover {
+      transform: scale(1.1);
+    }
+
+    .instagram-action-save {
+      margin-left: auto;
+    }
+
+    .instagram-likes {
+      padding: 0 16px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .instagram-caption {
+      padding: 0 16px;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .instagram-caption a {
+      color: var(--ig-primary-button);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .instagram-comments {
+      padding: 0 16px;
+      color: var(--ig-secondary-text);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .instagram-time {
+      padding: 0 16px;
+      color: var(--ig-secondary-text);
+      font-size: 10px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .donation-section {
+      padding: 20px;
+      background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+      border-top: 1px solid var(--ig-border);
+    }
+
+    .donation-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .donation-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .donation-option {
+      background: white;
+      border: 1px solid var(--ig-border);
+      border-radius: 8px;
+      padding: 15px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .donation-option:hover {
+      border-color: var(--ig-primary-button);
+      background: rgba(0, 149, 246, 0.05);
+    }
+
+    .donation-amount {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .donation-custom {
+      grid-column: span 3;
+      padding: 15px;
+    }
+
+    .donation-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--ig-border);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .donation-button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .donation-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .donation-note {
+      font-size: 12px;
+      color: var(--ig-secondary-text);
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .instagram-footer {
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--ig-secondary-text);
+      border-top: 1px solid var(--ig-border);
+    }
+
+    .instagram-footer a {
+      color: var(--ig-secondary-text);
+      text-decoration: none;
+    }
+
+    .loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3897f0;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    .loader-text {
+      font-size: 16px;
+      color: var(--ig-primary-text);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .success-icon {
+      font-size: 60px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .success-text {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .back-button {
+      padding: 10px 20px;
+      background: #3897f0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="instagram-container">
+    <div class="instagram-top-bar">
+      <a href="index.html" class="instagram-back-button">&times;</a>
+      <div class="instagram-top-title" data-translate="donation_header">Donazione</div>
+      <div class="instagram-top-more"></div>
+    </div>
+
+    <div class="instagram-header">
+      <div class="instagram-avatar">
+        <i class="fas fa-heart"></i>
+      </div>
+      <div class="instagram-user-info">
+        <div class="instagram-username">bologna_turismo</div>
+        <div class="instagram-subtitle" data-translate="project_subtitle">Progetto didattico - Sostienici</div>
+      </div>
+      <div class="instagram-more"></div>
+    </div>
+
+    <img src="donation-hero.jpg" alt="Bologna Turismo" class="instagram-image">
+
+    <div class="instagram-actions">
+      <div class="instagram-action"><i class="fas fa-heart"></i></div>
+      <div class="instagram-action"><i class="fas fa-comment"></i></div>
+      <div class="instagram-action"><i class="fas fa-share"></i></div>
+      <div class="instagram-action-save"><i class="fas fa-bookmark"></i></div>
+    </div>
+
+    <div class="instagram-likes" data-translate="likes_count">A 1.245 persone piace questo progetto</div>
+
+    <div class="instagram-caption">
+      <strong>bologna_turismo</strong> <span data-translate="donation_caption">Sostieni il nostro progetto didattico! Le tue donazioni ci aiutano a mantenere vivo questo itinerario culturale.</span> ❤️ #Bologna #TurismoCulturale #Donazioni
+    </div>
+
+    <div class="instagram-comments" data-translate="view_comments">Visualizza tutti i 78 commenti</div>
+
+    <div class="instagram-time" data-translate="time_ago">2 ORE FA</div>
+
+    <div class="donation-section">
+      <div class="donation-title" data-translate="choose_amount">Scegli l'importo della donazione</div>
+      
+      <div class="donation-options">
+        <div class="donation-option" onclick="selectAmount(5)">
+          <div class="donation-amount">5€</div>
+          <div class="donation-text" data-translate="thanks">Grazie!</div>
+        </div>
+        <div class="donation-option" onclick="selectAmount(10)">
+          <div class="donation-amount">10€</div>
+          <div class="donation-text" data-translate="fantastic">Fantastico!</div>
+        </div>
+        <div class="donation-option" onclick="selectAmount(20)">
+          <div class="donation-amount">20€</div>
+          <div class="donation-text" data-translate="awesome">Eccezionale!</div>
+        </div>
+        <div class="donation-option" onclick="selectAmount(50)">
+          <div class="donation-amount">50€</div>
+          <div class="donation-text" data-translate="wow">Wow!</div>
+        </div>
+        <div class="donation-option" onclick="selectAmount(100)">
+          <div class="donation-amount">100€</div>
+          <div class="donation-text" data-translate="amazing">Incredibile!</div>
+        </div>
+        <div class="donation-option donation-custom">
+          <input type="number" class="donation-input" data-translate="other_amount_placeholder" placeholder="Altro importo" id="custom-amount">
+        </div>
+      </div>
+
+      <button class="donation-button" onclick="processDonation()">
+        <i class="fas fa-gift"></i> <span data-translate="donate_now">DONA ORA</span>
+      </button>
+
+      <div class="donation-note" data-translate="donation_note">
+        Le donazioni sono simulate per scopi didattici. Questo è un progetto scolastico.
+      </div>
+    </div>
+
+    <div class="instagram-footer">
+      <a href="#" data-translate="info">Informazioni</a> • <a href="#" data-translate="help">Aiuto</a> • <a href="#" data-translate="terms">Termini</a>
+    </div>
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text" data-translate="processing">Elaborazione della donazione...</div>
+  </div>
+
+  <div class="success-message" id="success-message">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="success-text" data-translate="thank_you">
+      Grazie per il tuo supporto! La tua donazione è stata ricevuta con successo.
+    </div>
+    <button class="back-button" onclick="window.location.href='index.html'" data-translate="back_home">Torna alla Home</button>
+  </div>
+
+  <script src="translations.js"></script>
+  <script>
+    // Recupera la lingua salvata o usa l'italiano come default
+    const lang = localStorage.getItem('preferredLanguage') || 'it';
+    
+    // Applica le traduzioni al caricamento della pagina
+    document.addEventListener('DOMContentLoaded', function() {
+      changeLanguage(lang);
+    });
+
+    let selectedAmount = 0;
+
+    function selectAmount(amount) {
+      selectedAmount = amount;
+      document.getElementById('custom-amount').value = '';
+      
+      // Rimuovi la selezione da tutte le opzioni
+      document.querySelectorAll('.donation-option').forEach(option => {
+        option.style.borderColor = 'var(--ig-border)';
+        option.style.background = 'white';
+      });
+      
+      // Aggiungi la selezione all'opzione cliccata
+      event.currentTarget.style.borderColor = 'var(--ig-primary-button)';
+      event.currentTarget.style.background = 'rgba(0, 149, 246, 0.05)';
+    }
+
+    function processDonation() {
+      const customAmount = parseFloat(document.getElementById('custom-amount').value);
+      
+      if (customAmount && customAmount > 0) {
+        selectedAmount = customAmount;
+      }
+      
+      if (selectedAmount <= 0) {
+        alert(lang === 'it' ? 'Per favore seleziona un importo valido' :
+              lang === 'en' ? 'Please select a valid amount' :
+              lang === 'fr' ? 'Veuillez sélectionner un montant valide' :
+              'Bitte wählen Sie einen gültigen Betrag');
+        return;
+      }
+      
+      // Mostra il loader
+      document.getElementById('loader').style.display = 'flex';
+      
+      // Simula il processo di pagamento
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+        
+        // Nascondi tutto il contenuto principale
+        document.querySelector('.instagram-container').style.display = 'none';
+      }, 2500);
+    }
+
+    // Gestione dell'input personalizzato
+    document.getElementById('custom-amount').addEventListener('input', function() {
+      if (this.value) {
+        // Rimuovi la selezione da tutte le opzioni
+        document.querySelectorAll('.donation-option').forEach(option => {
+          option.style.borderColor = 'var(--ig-border)';
+          option.style.background = 'white';
+        });
+        
+        selectedAmount = parseFloat(this.value) || 0;
+      }
+    });
+
+    // Funzione per cambiare lingua
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-translate]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const translation = translations[lang] && translations[lang][key];
+
+        if (translation) {
+          if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+            element.setAttribute('placeholder', translation);
+          } else {
+            element.innerHTML = translation;
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

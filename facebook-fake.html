@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Fake - Bologna Turismo</title>
+  <style>
+    :root {
+      --fb-blue: #1877f2;
+      --fb-secondary-text: #65676b;
+      --fb-background: #f0f2f5;
+      --fb-card-background: #ffffff;
+      --fb-border: #dddfe2;
+    }
+    
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--fb-background);
+      color: #1c1e21;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Sfondo sfocato */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Fakepage.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.8);
+      z-index: -2;
+    }
+
+    /* Overlay scuro */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    
+    /* Header Facebook */
+    .facebook-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--fb-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .facebook-back-button {
+      color: var(--fb-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+    
+    .facebook-top-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--fb-blue);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+      text-align: center;
+      margin-right: 35px; /* Compensa il pulsante indietro */
+    }
+    
+    /* Container principale */
+    .facebook-container {
+      max-width: 500px;
+      width: 100%;
+      background: var(--fb-card-background);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 60px auto 20px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--fb-border);
+    }
+    
+    /* Header post */
+    .facebook-header {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+    }
+    
+    .facebook-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 8px;
+      background-color: #e4e6eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fb-blue);
+      font-weight: bold;
+    }
+    
+    .facebook-user-info {
+      flex: 1;
+    }
+    
+    .facebook-username {
+      font-weight: 600;
+      font-size: 15px;
+    }
+    
+    .facebook-post-time {
+      font-size: 13px;
+      color: var(--fb-secondary-text);
+      margin-top: 2px;
+    }
+    
+    .facebook-more {
+      color: var(--fb-secondary-text);
+      font-size: 20px;
+    }
+    
+    /* Contenuto post */
+    .facebook-content {
+      padding: 0 16px 12px;
+    }
+    
+    .facebook-text {
+      font-size: 15px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    
+    .facebook-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    /* Azioni */
+    .facebook-actions {
+      display: flex;
+      border-top: 1px solid var(--fb-border);
+      padding: 8px 0;
+    }
+    
+    .facebook-action {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fb-secondary-text);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 0;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .facebook-action:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    .facebook-action i {
+      margin-right: 6px;
+      font-size: 18px;
+    }
+    
+    /* Loader */
+    .facebook-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--fb-background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .facebook-loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-top-color: var(--fb-blue);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Top bar con pulsante torna indietro -->
+  <div class="facebook-top-bar">
+    <a href="index.html" class="facebook-back-button">‹</a>
+    <div class="facebook-top-title">Facebook</div>
+  </div>
+
+  <!-- Post Facebook -->
+  <div class="facebook-container">
+    <div class="facebook-header">
+      <div class="facebook-avatar">B</div>
+      <div class="facebook-user-info">
+        <div class="facebook-username">Bologna Turismo</div>
+        <div class="facebook-post-time">2 ore fa · <i class="fas fa-globe-europe"></i></div>
+      </div>
+      <div class="facebook-more">···</div>
+    </div>
+    <div class="facebook-content">
+      <div class="facebook-text">
+        Scopri la magia dell'Art Nouveau a Bologna! 🎨✨ Il nostro nuovo itinerario ti porterà alla scoperta dei più bei palazzi Liberty della città, con visite guidate e laboratori creativi. #Bologna #ArtNouveau #TurismoCulturale
+      </div>
+      <img src="Post.jpeg" alt="Bologna Art Nouveau" class="facebook-image">
+    </div>
+    <div class="facebook-actions">
+      <div class="facebook-action"><i class="far fa-thumbs-up"></i> Mi piace</div>
+      <div class="facebook-action"><i class="far fa-comment"></i> Commenta</div>
+      <div class="facebook-action"><i class="fas fa-share"></i> Condividi</div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div class="facebook-loader" style="display: none;">
+    <div class="facebook-loader-spinner"></div>
+  </div>
+
+  <script src="social_translations.js"></script>
+  <script>
+    // Mostra il loader per 1.5 secondi (simulazione caricamento)
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.querySelector('.facebook-loader');
+      loader.style.display = 'flex';
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 1500);
+     
+      updateSocialContent(); // Usa la funzione centralizzata
+    });
+  </script>
+</body>
+</html>

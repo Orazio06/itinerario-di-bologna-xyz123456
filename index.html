@@ -1,0 +1,551 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bologna: Tra Memoria, Letteratura e Arte Liberty</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Popup selezione lingua -->
+  <div class="language-popup" id="language-popup">
+    <div class="language-popup-content">
+      <h2>Select your language</h2>
+      <p>Choose your preferred language for browsing our website</p>
+      <div class="language-options">
+        <button onclick="changeLanguage('it')" class="language-option">
+          <img src="https://flagcdn.com/w20/it.png" alt="Italiano"> Italiano
+        </button>
+        <button onclick="changeLanguage('en')" class="language-option">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English"> English
+        </button>
+        <button onclick="changeLanguage('fr')" class="language-option">
+          <img src="https://flagcdn.com/w20/fr.png" alt="Français"> Français
+        </button>
+        <button onclick="changeLanguage('de')" class="language-option">
+          <img src="https://flagcdn.com/w20/de.png" alt="Deutsch"> Deutsch
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner supporto -->
+  <div class="support-banner">
+    <div class="support-banner-content">
+      <div class="language-selector">
+        <select id="language-select" onchange="changeLanguage(this.value)">
+          <option value="it">Italiano</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+      <p class="support-text" data-translate="supportbanner_text">Vuoi supportarci? <strong>Iscriviti</strong> al nostro sito!</p>
+      <a href="login.html" class="support-button" data-translate="supportbanner2_text"><strong>Accedi</strong> / <strong>Registrati</strong> <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Sezione Hero -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 data-aos="fade-up" data-translate="title"><strong>Bologna</strong>: Tra <strong>Memoria</strong>, <strong>Letteratura</strong> e <strong>Arte Liberty</strong></h1>
+      <p data-aos="fade-up" data-aos-delay="200" data-translate="subtitle">Scopri un <strong>itinerario unico</strong> tra storia, poesia e architettura.</p>
+      <a href="#chi-siamo" class="cta-button" data-aos="fade-up" data-aos-delay="400" data-translate="discover"><strong>Scopri di più</strong> <i class="fas fa-chevron-down"></i></a>
+    </div>
+    <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="600">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Sezione Chi siamo -->
+  <section class="chi-siamo" id="chi-siamo">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 data-translate="about"><strong>Chi siamo</strong></h2>
+        <div class="divider"></div>
+      </div>
+      <p data-aos="fade-up" data-aos-delay="200" data-translate="about_text">
+        Siamo un <strong>team appassionato</strong> di <strong>storia</strong>, <strong>letteratura</strong> e <strong>arte</strong>, dedicato a far scoprire le <strong>bellezze di Bologna</strong> attraverso <strong>itinerari unici</strong> e coinvolgenti.
+      </p>
+    </div>
+  </section>
+
+  <section class="il-progetto" id="progetto">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 data-translate="project_title"><strong>Il Progetto</strong></h2>
+        <div class="divider"></div>
+      </div>
+    
+      <div class="project-content" data-aos="fade-up">
+        <h3 data-translate="project_goals"><strong>Obiettivi del Progetto</strong></h3>
+        <p data-translate="project_goals_text">
+          Questo progetto nasce per valorizzare tre aspetti fondamentali di Bologna:
+          <strong>la memoria storica</strong> legata alla Seconda Guerra Mondiale,
+          <strong>l'eredità letteraria</strong> di Giovanni Pascoli e
+          <strong>l'architettura Liberty</strong> che adorna la città.
+        </p>
+      
+        <div class="project-grid">
+          <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-landmark"></i>
+            <h4 data-translate="memory_tourism"><strong>Turismo della Memoria</strong></h4>
+            <p data-translate="memory_tourism_text">
+              Valorizzare i luoghi simbolo della Resistenza e dei bombardamenti,
+              creando percorsi che mantengano viva la memoria storica.
+            </p>
+          </div>
+        
+          <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="fas fa-book-open"></i>
+            <h4 data-translate="literary_tourism"><strong>Turismo Letterario</strong></h4>
+            <p data-translate="literary_tourism_text">
+              Far rivivere l'opera di Giovanni Pascoli attraverso i luoghi che hanno
+              segnato la sua vita e la sua produzione poetica.
+            </p>
+          </div>
+        
+          <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+            <i class="fas fa-palette"></i>
+            <h4 data-translate="art_tourism"><strong>Turismo Artistico</strong></h4>
+            <p data-translate="art_tourism_text">
+              Scoprire l'eleganza dell'Art Nouveau bolognese, sopravvissuta ai
+              bombardamenti e ancora oggi testimone di un'epoca affascinante.
+            </p>
+          </div>
+        </div>
+      
+        <h3 data-translate="collaborations_title"><strong>Collaborazioni</strong></h3>
+        <p data-translate="collaborations_text">
+          Il progetto è realizzato in collaborazione con:
+          <strong>Università di Bologna</strong>,
+          <strong>ANPI</strong> (Associazione Nazionale Partigiani d'Italia),
+          <strong>Biblioteca Salaborsa</strong>, e numerose istituzioni culturali
+          del territorio che hanno contribuito alla realizzazione di questo itinerario.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sezione I nostri lavori -->
+  <section class="lavori" id="lavori">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 data-translate="our_work"><strong>Il nostro lavoro</strong></h2>
+        <div class="divider"></div>
+        <p class="sottotitolo-lavori" data-aos="fade-up" data-aos-delay="200" data-translate="work_subtitle">
+          Scopri il nostro <strong>itinerario di Bologna</strong>, suddiviso in <strong>tre giorni</strong> ricchi di <strong>storia</strong>, <strong>cultura</strong> e <strong>arte</strong>.
+        </p>
+      </div>
+
+      <!-- Sezione il viaggio in pillole -->
+      <div class="giorno" data-aos="fade-up">
+        <div class="giorno-header">
+          <div class="section-header">
+            <h2 data-translate="journey_pills"><strong>Il viaggio in pillole</strong></h2>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="pillole-content">
+            <p data-translate="journey_text"><strong>Bologna</strong> è una città che sa conquistare: la <strong>ricca tradizione enogastronomica</strong> e un <strong>patrimonio storico-culturale unico</strong>, offre un'<strong>esperienza di viaggio completa</strong> e indimenticabile. Questo <strong>itinerario di 3 giorni</strong> è progettato per farvi scoprire la città, offrendo al turista anche momenti di relax, attraverso <strong>tre temi principali</strong>: il <strong>turismo letterario</strong> legato a <strong>Giovanni Pascoli</strong>, il <strong>turismo della memoria</strong> attraverso luoghi simbolici legati alla <strong>Seconda Guerra Mondiale</strong>, e l'<strong>Art Nouveau</strong>, che si nasconde tra i palazzi e le vie del centro.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sezione Hotel -->
+      <div class="giorno" data-aos="fade-up">
+        <div class="giorno-header">
+          <div class="section-header">
+            <h2 data-translate="sezionehotel"><strong>L'Hotel</strong></h2>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="pillole-content">
+            <p data-translate="sezionehotel_text">Per quanto riguarda l'<strong>alloggio</strong>, abbiamo selezionato l'<strong>Hotel Accademia</strong> (<strong>tre stelle</strong>): quest'ultimo è <strong>vicino alle attrazioni</strong> da visitare, include la <strong>colazione</strong> ed è situato nel <strong>centro storico di Bologna</strong>.</p>
+          </div>
+          <div class="giorno-media">
+            <div class="hotel-images-container">
+              <div class="giorno-image" data-aos="fade-left">
+                <img src="hotelaccademia.jpg" alt="Hotel Accademia">
+                <div class="image-caption" data-translate="hotel_caption"><strong>Hotel Accademia Bologna</strong></div>
+              </div>
+              <div class="hotel-image-wrapper">
+                <div class="giorno-image" data-aos="fade-left">
+                  <img src="hotelaccademia2.jpg" alt="Hotel Accademia">
+                  <div class="image-caption" data-translate="hotel_caption"><strong>Hotel Accademia Bologna</strong></div>
+                </div>
+                <div class="hotel-image-wrapper">
+                  <div class="giorno-image" data-aos="fade-left">
+                    <img src="hotelaccademia3.jpg" alt="Hotel Accademia">
+                    <div class="image-caption" data-translate="hotel_caption"><strong>Hotel Accademia Bologna</strong></div>
+                  </div>
+                </div>
+              </div>
+            <div id="map-hotel" class="map" data-aos="fade-up"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giorno 1 -->
+      <div class="giorno" data-aos="fade-up">
+        <div class="giorno-header">
+          <h3 data-translate="day1_title"><strong>Giorno 1</strong> - Alla Scoperta dell'<strong>Università bolognese</strong></h3>
+          <div class="giorno-timeline">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"></div>
+          </div>
+        </div>
+        <div class="giorno-content">
+          <div class="giorno-text">
+            <p data-translate="day1_intro">
+              Oggi ci immergiamo nella <strong>storia dell'Università di Bologna</strong>, la <strong>più antica del mondo occidentale</strong>, e nel suo legame con <strong>Giovanni Pascoli</strong>, uno dei <strong>più grandi poeti italiani</strong>.
+            </p>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-sun"></i> <span data-translate="morning"><strong>Mattina</strong></span></h4>
+              <p data-translate="day1_morning">
+                Iniziamo con una <strong>visita guidata all'Università di Bologna</strong>, esplorando i suoi <strong>cortili storici</strong>, l'<strong>Archiginnasio</strong> e l'<strong>Aula Magna</strong>. Scopriremo come <strong>Pascoli insegnò qui</strong> e come l'ateneo ha influenzato la sua poesia.
+              </p>
+              <p class="highlight" data-translate="day1_highlight">
+                <i class="fas fa-map-marker-alt"></i> <strong>Tappa speciale</strong>: Una sosta nel cortile di <strong>Palazzo Poggi</strong>, dove Pascoli trascorse parte della sua vita accademica.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-utensils"></i> <span data-translate="lunch_title"><strong>Pausa pranzo libera</strong></span></h4>
+              <p data-translate="day1_lunch">
+                Si consiglia di pranzare in una tra le numerose <strong>trattorie e osterie del centro</strong> per assaporare la <strong>cucina bolognese</strong>.<br>
+                📌 <span data-translate="suggestion"><strong>Suggerimento</strong></span>: <strong>Trattoria Anna Maria</strong>, <strong>Sfoglia Rina</strong>, <strong>Osteria dell'Orsa</strong>.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-book-open"></i> <span data-translate="afternoon"><strong>Pomeriggio</strong></span></h4>
+              <p data-translate="day1_afternoon">
+                Visiteremo <strong>Casa Carducci</strong>, la casa-museo del poeta <strong>Giosuè Carducci</strong>, amico e collega di Pascoli. Concludiamo con un <strong>laboratorio di scrittura poetica</strong>, ispirato alle opere di Pascoli, per immergerci nell'<strong>atmosfera creativa</strong> che ha caratterizzato la sua vita.
+              </p>
+              <p class="highlight" data-translate="day1_workshop">
+                <i class="fas fa-pen-fancy"></i> <strong>Laboratorio</strong>: Scriveremo una breve poesia ispirata ai <strong>temi pascoliani</strong>, come la <strong>natura</strong>, la <strong>memoria</strong> e l'<strong>infanzia</strong>.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-moon"></i> <span data-translate="evening"><strong>Sera</strong></span></h4>
+              <p data-translate="day1_evening">
+                Per concludere la giornata, avrete del <strong>tempo libero</strong> per esplorare <strong>Bologna di sera</strong> e si consiglia di cenare in un <strong>ristorante tradizionale</strong> in stile pascoliano, con ambientazione <strong>romantica e rurale</strong>.<br>
+                📌 <span data-translate="suggestion"><strong>Suggerimento</strong></span>: <strong>Trattoria di Via Serra</strong> o <strong>Al Sangiovese</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="giorno-media">
+            <div class="giorno-image" data-aos="fade-left">
+              <img src="giorno1.jpg" alt="Università di Bologna">
+              <div class="image-caption" data-translate="day1_caption"><strong>Cortile dell'Università di Bologna</strong></div>
+            </div>
+            <div id="map-giorno1" class="map" data-aos="fade-up"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giorno 2 -->
+      <div class="giorno" data-aos="fade-up">
+        <div class="giorno-header">
+          <h3 data-translate="day2_title"><strong>Giorno 2</strong> - <strong>Bologna</strong> e la <strong>Seconda Guerra Mondiale</strong></h3>
+          <div class="giorno-timeline">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-dot active"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"></div>
+          </div>
+        </div>
+        <div class="giorno-content">
+          <div class="giorno-text">
+            <p data-translate="day2_intro">
+              Oggi esploriamo i luoghi che raccontano la <strong>storia di Bologna</strong> durante la <strong>Seconda Guerra Mondiale</strong>, tra <strong>Resistenza</strong>, <strong>memoria</strong> e <strong>rinascita</strong>.
+            </p>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-sun"></i> <span data-translate="morning"><strong>Mattina</strong></span></h4>
+              <p data-translate="day2_morning">
+                Visita al <strong>Museo Memoriale della Libertà</strong>, un luogo ricco di <strong>documenti</strong>, <strong>reperti</strong> e <strong>testimonianze della guerra</strong>. Ascolteremo storie di <strong>coraggio</strong> e <strong>sacrificio</strong>, con una guida che ci racconterà gli <strong>eventi che hanno segnato la città</strong>. Successivamente ci recheremo al <strong>Memoriale delle vittime della strage di Marzabotto</strong>, per ricordare una delle <strong>pagine più tragiche della guerra</strong>.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-utensils"></i> <span data-translate="lunch"><strong>Pausa pranzo libera</strong></span></h4>
+              <p data-translate="day2_lunch">
+                Si consiglia un <strong>pranzo leggero</strong> in un <strong>bistrot locale</strong>, con un <strong>menù storico</strong> che ripropone <strong>piatti tipici dell'epoca</strong>, per un'<strong>esperienza culinaria</strong> che ci riporta indietro nel tempo.<br>
+                📌 <span data-translate="suggestion"><strong>Suggerimento</strong></span>: <strong>Rosarose Bistrot</strong>, <strong>La Sberla Bistrot</strong> - entrambi offrono piatti semplici in ambienti legati alla tradizione.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-landmark"></i> <span data-translate="afternoon"><strong>Pomeriggio</strong></span></h4>
+              <p data-translate="day2_afternoon">
+                Visita al <strong>Cimitero Monumentale della Certosa</strong>, un luogo di <strong>memoria</strong> e <strong>arte</strong>, dove riposano <strong>partigiani</strong> e <strong>vittime della guerra</strong>. Concludiamo con una visita al <strong>Memoriale della Stazione</strong>, dedicato alle <strong>vittime della strage del 2 agosto 1980</strong>, un momento di <strong>silenzio</strong> e <strong>riflessione</strong>.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-moon"></i> <span data-translate="evening"><strong>Sera</strong></span></h4>
+              <p data-translate="day2_evening">
+                Si consiglia una <strong>cena con vista panoramica</strong> sulla città, per ammirare la <strong>bellezza</strong> e l'<strong>eleganza della città</strong>.<br>
+                📌 <span data-translate="suggestion"><strong>Suggerimento</strong></span>: cena con vista panoramica al <strong>Terrazza Mattuiani</strong> o <strong>Il Boccone del Prete</strong> per chi vuole godersi <strong>Bologna dall'alto</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="giorno-media">
+            <div class="giorno-image" data-aos="fade-left">
+              <img src="giorno2.jpg" alt="Museo Memoriale della Libertà">
+              <div class="image-caption" data-translate="day2_caption"><strong>Museo Memoriale della Libertà</strong></div>
+            </div>
+            <div id="map-giorno2" class="map" data-aos="fade-up"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giorno 3 -->
+      <div class="giorno" data-aos="fade-up">
+        <div class="giorno-header">
+          <h3 data-translate="day3_title"><strong>Giorno 3</strong> - <strong>Immersione nell'Art Nouveau</strong></h3>
+          <div class="giorno-timeline">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-dot active"></div>
+          </div>
+        </div>
+        <div class="giorno-content">
+          <div class="giorno-text">
+            <p data-translate="day3_intro">
+              Oggi scopriamo l'<strong>eleganza dell'Art Nouveau</strong> a Bologna, tra <strong>palazzi storici</strong>, <strong>dettagli architettonici</strong> e un tocco di <strong>creatività</strong>.
+            </p>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-sun"></i> <span data-translate="morning"><strong>Mattina</strong></span></h4>
+              <p data-translate="day3_morning">
+                Visita alla <strong>Biblioteca Salaborsa</strong>, una biblioteca pubblica dove ammireremo gli splendidi <strong>elementi Liberty</strong> della struttura, in particolare la <strong>maestosa cupola in vetro e ferro battuto</strong> con le sue decorazioni <strong>geometriche e floreales</strong>. Partecipiamo a un <strong>workshop di decorazione Art Nouveau</strong>, dove creeremo nella <strong>Sala Conferenze</strong> il nostro <strong>segnalibro decorato</strong> con motivi ispirati a questo stile.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-utensils"></i> <span data-translate="lunch"><strong>Pausa pranzo libera</strong></span></h4>
+              <p data-translate="day3_lunch">
+                Si consiglia un pranzo legato alla <strong>degustazione di vini locali</strong> abbinati a <strong>piatti tipici</strong>, ideale per ricaricare le energie.<br>
+                📌 <span data-translate="suggestion"><strong>Suggerimento</strong></span>: <strong>Vicolo Colombina</strong>
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-palette"></i> <span data-translate="afternoon"><strong>Pomeriggio</strong></span></h4>
+              <p data-translate="day3_afternoon">
+                Passeggiata verso la <strong>Palazzina Majani</strong>, alla scoperta degli <strong>edifici Art Nouveau</strong> nascosti tra le vie del centro. Concludiamo con una sosta in <strong>Via Farini</strong>, dove ammireremo alcuni dei <strong>più bei palazzi Liberty</strong> della città.
+              </p>
+            </div>
+            <div class="giorno-tappa" data-aos="fade-right">
+              <h4><i class="fas fa-moon"></i> <span data-translate="evening"><strong>Sera</strong></span></h4>
+              <p data-translate="day3_evening">
+                <strong>Cena di arrivederci</strong> al <strong>Ristorante Diana</strong>, in stile <strong>Belle Époque</strong>, per immergerci completamente nell'<strong>atmosfera Art Nouveau</strong>.
+              </p> 
+            </div>
+          </div>
+          <div class="giorno-media">
+            <div class="giorno-image" data-aos="fade-left">
+              <img src="giorno3.jpg" alt="Biblioteca Salaborsa e Palazzina Majani">
+              <div class="image-caption" data-translate="day3_caption"><strong>Biblioteca Salaborsa</strong></div>
+            </div>
+            <div id="map-giorno3" class="map" data-aos="fade-up"></div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sezione Quote -->
+      <div class="giorno quote-section" data-aos="fade-up">
+        <div class="quote-content">
+          <div class="quote-header">
+            <div class="section-header">
+              <h2 data-translate="sezionequote"><strong>Il prezzo</strong></h2>
+              <div class="divider"></div>
+            </div>
+          </div>
+          
+          <div class="quote-price">321€ <span data-translate="per_person"><strong>a persona</strong></span></div>
+          
+          <div class="quote-includes">
+            <p data-translate="sezionequote_text">Il <strong>prezzo complessivo</strong> del viaggio organizzato è di <strong>321 euro a persona</strong> e comprende: <strong>Pernottamenti</strong>, <strong>colazione in albergo</strong>, <strong>biglietti dei musei</strong>, <strong>laboratori</strong>, <strong>visite guidate</strong> e la <strong>cena del terzo giorno</strong>.</p>
+          </div>
+
+          <div class="quote-excludes">
+            <p data-translate="sezionequote_text2">La quota <strong>non comprende</strong>: <strong>cene e pranzi</strong> (esclusa la cena del giorno 3), <strong>trasporti</strong>, <strong>spese extra</strong> e tutto ciò che non è citato nella voce "il prezzo comprende". </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sezione Contatti -->
+  <section class="contatti" id="contatti">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 data-translate="contacts"><strong>Contatti</strong></h2>
+        <div class="divider"></div>
+     
+        <!-- Nuovo QR code con scritta sopra -->
+        <div class="qr-container" data-aos="fade-up" data-aos-delay="300">
+          <p class="qr-caption" data-translate="donate_qr">Scansiona per supportarci con una donazione</p>
+          <a href="instagram-donation.html" class="qr-link">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://orazio06.github.io/itinerario-di-bologna-xyz123456/instagram-donation.html" 
+                 alt="QR Code Donazioni" class="qr-code">
+          </a>
+        </div>
+
+        <p data-aos="fade-up" data-aos-delay="200" data-translate="contacts_text"><strong>Restiamo in contatto!</strong> Seguici sui <strong>social</strong> o scrivici una <strong>email</strong>.</p>
+      </div>
+      <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+        <a href="facebook-fake.html" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="instagram-fake.html" id="instagram-link" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="x-fake.html" class="social-link"><i class="fab fa-x"></i></a>
+        <a href="youtube-fake.html" class="social-link"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <div class="email" data-aos="fade-up" data-aos-delay="600">
+        <a href="mailto:info@bolognaturismo.it" class="email-link">
+          <i class="fas fa-envelope"></i> info@bolognaturismo.it
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo" data-aos="fade-right">
+          <h3>Bologna Turismo</h3>
+          <p data-translate="footer_slogan"><strong>Scopri la città come non l'hai mai vista</strong></p>
+        </div>
+        <div class="footer-links" data-aos="fade-up">
+          <h4 data-translate="useful_links"><strong>Link utili</strong></h4>
+          <ul>
+            <li><a href="#chi-siamo" data-translate="about_link"><strong>Chi siamo</strong></a></li>
+            <li><a href="#progetto" data-translate="project_link"><strong>Il Progetto</strong></a></li>
+            <li><a href="#lavori" data-translate="itineraries_link"><strong>Itinerari</strong></a></li>
+            <li><a href="#contatti" data-translate="contacts_link"><strong>Contatti</strong></a></li>
+            <li><a href="login.html" data-translate="login_link"><strong>Login</strong></a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter" data-aos="fade-left">
+          <h4 data-translate="newsletter"><strong>Newsletter</strong></h4>
+          <form>
+            <input type="email" placeholder="La tua email" data-translate="email_placeholder">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    
+      <div class="collaborazioni" data-aos="fade-up">
+        <h4 data-translate="collaborations">In collaborazione con</h4>
+        <div class="partner-loghi">
+          <a href="https://www.regione.toscana.it" target="_blank" rel="noopener noreferrer">
+            <img src="logoregionetoscana.png" alt="Regione Toscana" class="partner-logo">
+          </a>
+          <a href="https://www.anpi.it" target="_blank" rel="noopener noreferrer">
+            <img src="logoanpi.png" alt="ANPI" class="partner-logo">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bologna: Tra Memoria, Letteratura e Arte Liberty. <span data-translate="rights_reserved"><strong>Tutti i diritti riservati.</strong></span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Torna su -->
+  <a href="#" class="back-to-top" data-aos="fade-up">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+  // Controlla se l'utente ha già cliccato il pulsante
+  document.addEventListener('DOMContentLoaded', function() {
+    if(localStorage.getItem('userLoggedIn')) {
+      const banner = document.getElementById('supportBanner');
+      if(banner) {
+        banner.innerHTML = `
+          <div class="support-banner-content">
+            <a href="index.html" class="support-button"><i class="fas fa-arrow-left"></i> Torna alla Home</a>
+          </div>
+        `;
+       }
+     }
+   });
+  </script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Inizializza AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Loader per Instagram
+    document.getElementById('instagram-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      const loader = document.createElement('div');
+      loader.className = 'instagram-loader';
+      loader.innerHTML = `
+        <div class="instagram-loader-content">
+          <div class="instagram-loader-spinner"></div>
+          <p>Caricamento in corso...</p>
+        </div>
+      `;
+      document.body.appendChild(loader);
+      setTimeout(() => {
+        window.location.href = this.href;
+      }, 1500);
+    });
+
+    // Torna su
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Mostra popup lingua al primo accesso
+    document.addEventListener('DOMContentLoaded', function() {
+      const langPopup = document.getElementById('language-popup');
+      const userLang = navigator.language || navigator.userLanguage;
+      const savedLang = localStorage.getItem('preferredLanguage');
+      
+      if (!savedLang && !userLang.startsWith('it')) {
+        langPopup.style.display = 'flex';
+      }
+      
+      // Imposta la lingua salvata o predefinita
+      const langToSet = savedLang || 'it';
+      changeLanguage(langToSet);
+      document.getElementById('language-select-footer').value = langToSet;
+    });
+
+    // Chiudi popup quando si clicca fuori
+    document.getElementById('language-popup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

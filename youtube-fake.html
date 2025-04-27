@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Fake - Bologna Turismo</title>
+  <style>
+    :root {
+      --yt-red: #ff0000;
+      --yt-secondary-text: #606060;
+      --yt-background: #f9f9f9;
+      --yt-card-background: #ffffff;
+      --yt-border: #e5e5e5;
+    }
+    
+    body {
+      font-family: "Roboto", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--yt-background);
+      color: #030303;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Sfondo sfocato */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Fakepage.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.8);
+      z-index: -2;
+    }
+
+    /* Overlay scuro */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    
+    /* Header YouTube */
+    .youtube-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--yt-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .youtube-back-button {
+      color: var(--yt-red);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+    
+    .youtube-top-title {
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--yt-red);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+      text-align: center;
+      margin-right: 35px; /* Compensa il pulsante indietro */
+    }
+    
+    /* Container principale */
+    .youtube-container {
+      max-width: 600px;
+      width: 100%;
+      background: var(--yt-card-background);
+      border-radius: 0;
+      overflow: hidden;
+      margin: 60px auto 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--yt-border);
+    }
+    
+    /* Header community post */
+    .youtube-header {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid var(--yt-border);
+    }
+    
+    .youtube-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 12px;
+      background-color: #e5e5e5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--yt-red);
+      font-weight: bold;
+    }
+    
+    .youtube-channel-info {
+      flex: 1;
+    }
+    
+    .youtube-channel-name {
+      font-weight: 500;
+      font-size: 16px;
+    }
+    
+    .youtube-post-time {
+      font-size: 13px;
+      color: var(--yt-secondary-text);
+      margin-top: 2px;
+    }
+    
+    .youtube-more {
+      color: var(--yt-secondary-text);
+      font-size: 20px;
+    }
+    
+    /* Contenuto community post */
+    .youtube-content {
+      padding: 16px;
+    }
+    
+    .youtube-text {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .youtube-image-container {
+      margin: 10px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .youtube-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Azioni */
+    .youtube-actions {
+      display: flex;
+      padding: 8px 16px;
+      border-top: 1px solid var(--yt-border);
+      color: var(--yt-secondary-text);
+    }
+    
+    .youtube-action {
+      display: flex;
+      align-items: center;
+      margin-right: 24px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .youtube-action i {
+      margin-right: 6px;
+      font-size: 18px;
+    }
+    
+    .youtube-action-like:hover {
+      color: var(--yt-red);
+    }
+    
+    /* Loader */
+    .youtube-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--yt-background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .youtube-loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-top-color: var(--yt-red);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Top bar con pulsante torna indietro -->
+  <div class="youtube-top-bar">
+    <a href="index.html" class="youtube-back-button">‹</a>
+    <div class="youtube-top-title">YouTube</div>
+  </div>
+
+  <!-- Community Post YouTube -->
+  <div class="youtube-container">
+    <div class="youtube-header">
+      <div class="youtube-avatar">B</div>
+      <div class="youtube-channel-info">
+        <div class="youtube-channel-name">Bologna Turismo</div>
+        <div class="youtube-post-time">2 giorni fa</div>
+      </div>
+      <div class="youtube-more">···</div>
+    </div>
+    <div class="youtube-content">
+      <div class="youtube-text">
+        🎨 Scopri la magia dell'Art Nouveau a Bologna con il nostro nuovo itinerario! ✨<br><br>
+        Abbiamo creato un percorso speciale per mostrarti i più bei palazzi Liberty della città, con visite guidate e laboratori creativi dove potrai imparare a riconoscere gli elementi caratteristici di questo stile.<br><br>
+        Ecco un'antepima di quello che potrai scoprire!<br><br>
+        #Bologna #ArtNouveau #TurismoCulturale
+      </div>
+      <div class="youtube-image-container">
+        <img src="Post.jpeg" alt="Bologna Art Nouveau" class="youtube-image">
+      </div>
+    </div>
+    <div class="youtube-actions">
+      <div class="youtube-action youtube-action-like">
+        <i class="far fa-thumbs-up"></i>
+        <span>1.234</span>
+      </div>
+      <div class="youtube-action">
+        <i class="far fa-comment"></i>
+        <span>Commenta</span>
+      </div>
+      <div class="youtube-action">
+        <i class="fas fa-share"></i>
+        <span>Condividi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div class="youtube-loader" style="display: none;">
+    <div class="youtube-loader-spinner"></div>
+  </div>
+
+  <script src="social_translations.js"></script>
+  <script>
+    // Mostra il loader per 1.5 secondi (simulazione caricamento)
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.querySelector('.youtube-loader');
+      loader.style.display = 'flex';
+      
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 1500);
+
+      updateSocialContent(); // Usa la funzione centralizzata
+    });
+  </script>
+</body>
+</html>

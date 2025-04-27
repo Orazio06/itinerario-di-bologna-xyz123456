@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="login_title">Accesso - Bologna Turismo</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Banner superiore -->
+  <div class="login-banner">
+    <div class="login-banner-content">
+      <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> <span data-translate="back_button">Torna alla Home</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Contenuto principale -->
+  <main class="login-main">
+    <div class="login-container">
+      <div class="login-box">
+        <!-- Form di Registrazione -->
+        <div class="form-container active" id="register-container">
+          <div class="login-header">
+            <h1><i class="fas fa-user-plus"></i> <span data-translate="register_title">Registrati</span></h1>
+            <p data-translate="register_subtitle">Crea il tuo account per accedere a contenuti esclusivi</p>
+          </div>
+          
+          <form id="register-form">
+            <div class="form-group">
+              <label for="register-name" data-translate="name_label">Nome completo</label>
+              <input type="text" id="register-name" placeholder="Mario Rossi" data-translate="name_placeholder" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-email" data-translate="email_label">Email</label>
+              <input type="email" id="register-email" placeholder="tua@email.com" data-translate="email_placeholder" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-password" data-translate="password_label">Password</label>
+              <input type="password" id="register-password" placeholder="Almeno 8 caratteri" data-translate="password_placeholder" required>
+            </div>
+            
+            <button type="submit" class="login-btn">
+              <i class="fas fa-user-plus"></i> <span data-translate="register_button">Registrati</span>
+            </button>
+            
+            <p id="register-message" class="message"></p>
+          </form>
+          
+          <p class="toggle-form">
+            <span data-translate="login_prompt">Hai già un account?</span> <a href="#" id="show-login" data-translate="login_link">Accedi qui</a>
+          </p>
+        </div>
+
+        <!-- Form di Login -->
+        <div class="form-container" id="login-container">
+          <div class="login-header">
+            <h1><i class="fas fa-sign-in-alt"></i> <span data-translate="login_title_main">Ben tornato</span></h1>
+            <p data-translate="login_subtitle">Accedi al tuo account personale</p>
+          </div>
+          
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email" data-translate="email_label">Email</label>
+              <input type="email" id="login-email" placeholder="tua@email.com" data-translate="email_placeholder" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="login-password" data-translate="password_label">Password</label>
+              <input type="password" id="login-password" placeholder="La tua password" data-translate="password_placeholder" required>
+            </div>
+            
+            <div class="login-actions">
+              <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember" data-translate="remember_me">Ricordami</label>
+              </div>
+              <a href="#" class="forgot-password" data-translate="forgot_password">Password dimenticata?</a>
+            </div>
+            
+            <button type="submit" class="login-btn">
+              <i class="fas fa-sign-in-alt"></i> <span data-translate="login_button">Accedi</span>
+            </button>
+            
+            <p id="login-message" class="message"></p>
+          </form>
+          
+          <p class="toggle-form">
+            <span data-translate="register_prompt">Non hai un account?</span> <a href="#" id="show-register" data-translate="register_link">Registrati qui</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="login-footer">
+    <div class="container">
+      <p data-translate="footer_text">&copy; 2025 Bologna Turismo. Tutti i diritti riservati.</p>
+      <p>
+        <a href="#"><i class="fas fa-envelope"></i> info@bolognaturismo.it</a> | 
+        <a href="#"><i class="fas fa-phone"></i> +39 051 123456</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="login-translations.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

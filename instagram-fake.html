@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Fake - Bologna Turismo</title>
+  <style>
+    :root {
+      --ig-primary-text: #262626;
+      --ig-secondary-text: #8e8e8e;
+      --ig-primary-button: #0095f6;
+      --ig-primary-background: #fafafa;
+      --ig-secondary-background: #ffffff;
+      --ig-border: #dbdbdb;
+      --ig-highlight-background: #efefef;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--ig-primary-text);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Sfondo sfocato */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Fakepage.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.8);
+      z-index: -2;
+    }
+
+    /* Overlay scuro */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    
+    /* Header Instagram */
+    .instagram-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ig-border);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .instagram-back-button {
+      color: var(--ig-primary-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .instagram-top-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .instagram-top-more {
+      width: 24px;
+      text-align: center;
+    }
+    
+    /* Container principale */
+    .instagram-container {
+      max-width: 470px;
+      width: 100%;
+      background: var(--ig-secondary-background);
+      border: 1px solid var(--ig-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 60px auto 20px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Header post */
+    .instagram-header {
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--ig-border);
+    }
+    
+    .instagram-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 12px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    
+    .instagram-username {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .instagram-more {
+      margin-left: auto;
+      font-weight: bold;
+    }
+    
+    /* Immagine post */
+    .instagram-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Azioni */
+    .instagram-actions {
+      padding: 8px 16px;
+      display: flex;
+      gap: 16px;
+    }
+    
+    .instagram-action {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    .instagram-action-save {
+      margin-left: auto;
+    }
+    
+    /* Testo post */
+    .instagram-likes {
+      padding: 0 16px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .instagram-caption {
+      padding: 0 16px;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .instagram-caption a {
+      color: var(--ig-primary-button);
+      text-decoration: none;
+    }
+    
+    .instagram-comments {
+      padding: 0 16px;
+      color: var(--ig-secondary-text);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .instagram-time {
+      padding: 0 16px;
+      color: var(--ig-secondary-text);
+      font-size: 10px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    
+    /* Loader */
+    .instagram-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--ig-primary-background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .instagram-loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--ig-highlight-background);
+      border-top-color: var(--ig-primary-button);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar con pulsante torna indietro -->
+  <div class="instagram-top-bar">
+    <a href="index.html" class="instagram-back-button">‹</a>
+    <div class="instagram-top-title">bolognaturismo</div>
+    <div class="instagram-top-more">...</div>
+  </div>
+
+  <!-- Post Instagram -->
+  <div class="instagram-container">
+    <div class="instagram-header">
+      <div class="instagram-avatar"></div>
+      <div class="instagram-username">bolognaturismo</div>
+      <div class="instagram-more">...</div>
+    </div>
+    <img src="Post.jpeg" alt="Post Bologna & Art Nouveau" class="instagram-image">
+    <div class="instagram-actions">
+      <div class="instagram-action">❤️</div>
+      <div class="instagram-action">💬</div>
+      <div class="instagram-action">↗️</div>
+      <div class="instagram-action instagram-action-save">🔖</div>
+    </div>
+    <div class="instagram-likes">1,234 likes</div>
+    <div class="instagram-caption">
+      <strong>bolognaturismo</strong> NUOVO LABORATORIO! 🎨✨ Scopri la bellezza dell'Art Nouveau a Bologna con visite guidate e laboratori creativi. <a href="#">#Bologna</a> <a href="#">#ArtNouveau</a> <a href="#">#Cultura</a>
+    </div>
+    <div class="instagram-comments">View all 128 comments</div>
+    <div class="instagram-time">2 hours ago</div>
+  </div>
+
+  <!-- Loader -->
+  <div class="instagram-loader" style="display: none;">
+    <div class="instagram-loader-spinner"></div>
+  </div>
+
+  <script src="social_translations.js"></script>
+  <script>
+    // Mostra il loader per 1.5 secondi (simulazione caricamento)
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.querySelector('.instagram-loader');
+      loader.style.display = 'flex';
+      
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 1500);
+
+      updateSocialContent(); // Usa la funzione centralizzata
+    });
+  </script>
+</body>
+</html>
