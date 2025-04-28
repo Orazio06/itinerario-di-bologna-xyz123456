@@ -56,7 +56,7 @@ const translations = {
     contacts_link: "<strong>Contatti</strong>",
     login_link: "<strong>Login</strong>",
     newsletter: "<strong>Newsletter</strong>",
-    email_placeholder: "<strong>La tua email</strong>",
+    email_placeholder: "La tua email",
     rights_reserved: "<strong>Tutti i diritti riservati.</strong>",
     support_text: "Vuoi <strong>supportarci</strong>? <strong>Iscriviti</strong> al nostro sito!",
     support_button: "<strong>Accedi</strong> / <strong>Registrati</strong>",
